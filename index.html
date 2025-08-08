@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Deshan Kalupahana</title>
+  <style>
+    /* THEME VARIABLES */
+    :root {
+      --matrix-green: #0f0;
+      --bg-overlay: rgba(0, 0, 0, 0.905);
+      --card-bg: rgba(0, 0, 0, 0.5);
+      --text-shadow: 0 0 8px var(--matrix-green);
+      --term-bg: #000;
+      --term-header: #333;
+      --term-text: #0f0;
+    }
+
+    /* GLOBAL RESET */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      background: #000;
+      font-family: 'Fira Code', monospace;
+      color: var(--matrix-green);
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+    a { color: var(--matrix-green); text-decoration: none; }
+    a:hover { color: #fff; }
+
+    /* MATRIX RAIN BACKGROUND */
+    canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+
+    /* LAYOUT */
+    .layout { display: flex; height: 100vh; }
+    .sidebar {
+      width: 350px;
+      background: var(--bg-overlay);
+      padding: 4rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 2px 0 10px var(--matrix-green);
+    }
+    .sidebar img { width: 150px; height: 150px; border-radius: 50%; border: 3px solid var(--matrix-green); margin-bottom: 2rem; }
+    .sidebar h1 { font-size: 2rem; letter-spacing: 2px; text-shadow: var(--text-shadow); margin-bottom: 1rem; text-align: center;}
+    .sidebar p.title { color: #ccc; margin-bottom: 1.5rem; text-align: center; }
+    .sidebar .contact { margin-top: auto; font-size: 0.9rem; text-align: center; width: 100%; }
+    .sidebar .contact p { margin-bottom: 0.5rem; word-break: break-word; }
+
+    .main { flex: 1; overflow-y: auto; background: var(--bg-overlay); position: relative; z-index: 10; padding-bottom: 20px;}
+
+    /* DESKTOP NAV */
+    #drawer-nav {
+      display: flex;
+      justify-content: center;
+      background: var(--bg-overlay);
+      padding: 1.5rem 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.7);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+    #drawer-nav ul { display: flex; justify-content: center; gap: 2rem; list-style: none; }
+    #drawer-nav a { font-weight: bold; position: relative; padding-bottom: 2px; }
+    #drawer-nav a::before { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--matrix-green); transition: width 0.3s; }
+    #drawer-nav a:hover::before { width: 100%; }
+
+    /* MOBILE HAMBURGER */
+    #nav-toggle { display: none; position: fixed; top: 1rem; left: 1rem; z-index: 30; background: var(--bg-overlay); border: none; color: var(--matrix-green); font-size: 1.5rem; padding: 0.5rem; border-radius: 4px; cursor: pointer; }
+
+    /* DRAWER HEADER (MOBILE) */
+    #drawer-drawer .drawer-header { text-align: center; margin-bottom: 1rem; }
+    #drawer-drawer .drawer-header img {
+      width: 80px; height: 80px; border-radius: 50%; border: 2px solid var(--matrix-green); margin-bottom: 0.5rem;
+    }
+    #drawer-drawer .drawer-header h1 { font-size: 1.2rem; margin-bottom: 0.25rem; }
+    #drawer-drawer .drawer-header p { font-size: 0.9rem; color: #ccc; }
+
+    /* MOBILE DRAWER */
+    #drawer-drawer { display: none; position: fixed; top: 0; left: -100%; width: 75%; max-width: 300px; height: 100%; background: var(--bg-overlay); padding-top: 2rem; transition: left 0.3s ease-in-out; z-index: 25; overflow-y: auto; }
+    #drawer-drawer.open { left: 0; }
+    #drawer-drawer ul { display: flex; flex-direction: column; gap: 1rem; padding: 1rem; list-style: none; }
+
+    /* TERMINAL WINDOW STYLE */
+    .terminal { background: var(--term-bg); border-radius: 4px; border: 1px solid #444; margin: 2rem 1rem; overflow: hidden; box-shadow: 0 0 10px rgba(0,255,0,0.3); }
+    .terminal-header { background: var(--term-header); height: 28px; display: flex; align-items: center; padding: 0 10px; color: #ccc; font-size: 0.85rem; }
+    .term-buttons span { display: inline-block; width: 12px; height: 12px; margin-right: 6px; background: #555; border-radius: 2px; }
+    .term-title { flex: 1; text-align: center; margin-right: 50px; }
+    .terminal-content { padding: 1rem; color: var(--term-text); font-family: 'Fira Code', monospace; font-size: 0.95rem; line-height: 1.4; white-space: wrap; }
+    .terminal-content p { margin-bottom: 1rem; }
+    .cmd { color: var(--term-text); }
+
+    /* COPYRIGHT */
+    .copyright {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      padding: 1rem;
+      background: rgba(0, 0, 0, 0.8);
+      color: var(--matrix-green);
+      font-size: 0.7rem;
+    }
+
+    /* MOBILE STYLES */
+    @media (max-width: 768px) {
+      .layout { flex-direction: column; height: auto; }
+      .sidebar { width: 100%; }
+      #nav-toggle { display: block; }
+      #drawer-nav { display: none; }
+      #drawer-drawer { display: block; }
+      .main { padding-top: 0; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Hamburger toggle -->
+  <button id="nav-toggle" aria-label="Toggle navigation">☰</button>
+  <canvas id="matrix"></canvas>
+  <div class="layout">
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar">
+      <img src="img/profile.png" alt="Profile Photo">
+      <h1>Deshan Kalupahana</h1>
+      <p class="title">PhD Candidate, UNSW Sydney <br> Australia</p>
+      
+      <div class="contact">
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/deshankalupahana/">linkedin.com/in/deshankalupahana</a></p>
+        <p>GitHub: <a href="https://github.com/DeshanKTD">github.com/DeshanKTD</a></p>
+        <p>Google Scholar: <a href="https://scholar.google.com/citations?user=pLL8jPgAAAAJ&hl=en">scholar.google.com/citations?user=pLL8jPgAAAAJ&hl</a></p>
+        <p>ORCID: <a href="https://orcid.org/0000-0001-7466-8108">0000-0001-7466-8108</a></p>
+        <p>X: <a href="https://twitter.com/deshanblack">@deshanblack</a></p>
+      </div>
+    </aside>
+    <!-- RIGHT MAIN CONTENT -->
+    <main class="main">
+      <!-- Desktop nav -->
+      <nav id="drawer-nav">
+        <ul>
+          <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#research">Research</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#publications">Publications</a></li>
+
+        </ul>
+      </nav>
+      <!-- Mobile drawer -->
+      <nav id="drawer-drawer">
+        <div class="drawer-header">
+          <img src="img/profile.png" alt="Profile Photo">
+          <h1>Deshan Kalupahana</h1>
+          <p class="title">PhD Candidate, UNSW Sydney</p>
+          <p>Australia</p>
+        </div>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#research">Research</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#publications">Publications</a></li>
+
+        </ul>
+      </nav>
+      <!-- Scripts -->
+      <script>
+        // Mobile drawer toggle
+        document.addEventListener('DOMContentLoaded', () => {
+          const toggle = document.getElementById('nav-toggle');
+          const drawer = document.getElementById('drawer-drawer');
+          if (toggle && drawer) toggle.addEventListener('click', () => drawer.classList.toggle('open'));
+        });
+      </script>
+      <!-- About Terminal -->
+      <section id="about"></section>
+      <div class="terminal">
+        <div class="terminal-header">
+          <div class="term-buttons"><span></span><span></span><span></span></div>
+          <div class="term-title">About</div>
+        </div>
+        <div class="terminal-content">
+          <p><span class="cmd">deshan@workstation ~/portfolio % cat about.txt</span></p>
+
+            <p>I’m currently pursuing a PhD in Computer Vision and Artificial Intelligence at the School of Computer Science and Engineering, University of New South Wales (UNSW) in Sydney, Australia. My research is dedicated to developing AI-based methods for the efficient analysis and interpretation of medical imagery, with a particular focus on colorectal diseases.</p>
+
+            <p>Prior to starting my doctoral studies, I was part of a multidisciplinary research team in Sri Lanka exploring applications of Optical Coherence Tomography (OCT) across various domains. In 2024, I completed my MPhil at the University of Sri Jayewardenepura, where I investigated the use of OCT imaging to detect circular leaf spot disease in persimmon by analyzing leaf microstructures. During that time, I also had the opportunity to collaborate with a group working on MRI-based brain cancer analysis, which deepened my appreciation for medical-image-driven AI solutions.</p>
+
+            <p>My broader interests center around artificial intelligence and computer vision, especially their applications in healthcare. I’m passionate about creating AI-driven systems that can interpret complex medical data rapidly and accurately, with the ultimate goal of supporting better diagnostics and improving patient outcomes worldwide.</p>
+        </div>
+      </div>
+
+            <!-- Education Terminal -->
+      <section id="education"></section>
+      <div class="terminal">
+        <div class="terminal-header"><div class="term-buttons"><span></span><span></span><span></span></div><div class="term-title">Education</div></div>
+        <div class="terminal-content">
+          <p><span class="cmd">deshan@workstation ~/portfolio % cat education.txt</span> </p>
+          <p>- PhD, School of Computer Science and Engineering, UNSW Sydney, Australia (2024 Oct - Present)</p>
+          <p>- MPhil, Faculty of Engineering, University of Sri Jayewardenepura, Sri Lanka (2021 Oct - 2024 Aug)</p>
+          <p>- BScEng (Hons), Faculty of Engineering, University of Peradeniya, Sri Lanka (2014 Jan - 2017 Oct)</p>
+        </div>
+      </div>
+      <!-- Experience Terminal -->
+      <section id="experience"></section>
+      <div class="terminal">
+        <div class="terminal-header"><div class="term-buttons"><span></span><span ></span><span></span></div><div class="term-title">Experience</div></div>
+        <div class="terminal-content">
+          <p><span class="cmd">deshan@workstation ~/portfolio % cat experience.txt</span></p>
+          <p>- Casual Acedemic, School of Computer Science & Engineering, UNSW Sydney, Australia (2025 Feb - Present)</p>
+          <p>- Lecturer, Faculty of Engineering, University of Sri Jayewardenepura, Sri Lanka (2021 Sept - 2024 Oct)</p>
+          <p>- Instructor, Faculty of Engineering, University of Sri Jayewardenepura, Sri Lanka (2019 Dec - 2024 Aug)</p>
+          <p>- Visiting Lecturer, ICBT Campus, Sri Lanka (2023 Sept - 2024 Sept)</p>
+          <p>- Visiting Lecturer, APIIT, Sri Lanka (2022 Nov - 2023 Mar)</p>
+          <p>- Software Engineer, WSO2, Sri Lanka (2017 Nov - 2018 Jun)</p>
+          <p>- System and Network Engineer (Intern), IBM World Trade Corporation, Sri Lanka (2016 Oct - 2017 Mar)</p>
+        </div>
+      </div>
+
+      <!-- Research Terminal -->
+      <section id="research"></section>
+      <div class="terminal">
+        <div class="terminal-header"><div class="term-buttons"><span></span><span></span><span></span></div><div class="term-title">Research</div></div>
+        <div class="terminal-content">
+          
+          <p><span class="cmd">deshan@workstation ~/portfolio % cat research.txt</span></p>
+
+- Early Detection of Colorectal Diseases: Developing AI-based methods for efficient analysis of colorectal diseases using computer vision and machine learning. 
+- Optical Coherence Tomography (OCT) Applications: Researching the use of OCT in various domains, including medical imaging and plant disease detection.
+- Machine Perception & Interpretation: Exploring AI technologies to enhance machine understanding of visual data, particularly in medical contexts.
+- Circular Leaf Spot Disease Detection: Investigating the use of OCT for detecting circular leaf spot disease in persimmon through image analysis.
+- MRI-based Brain Cancer Analysis: Collaborating on research projects focused on analyzing brain cancer using MRI imaging techniques.
+
+
+        </div>
+      </div>
+      <!-- Projects Terminal -->
+      <section id="projects"></section>
+      <div class="terminal">
+        <div class="terminal-header"><div class="term-buttons"><span></span><span></span><span></span></div><div class="term-title">Projects</div></div>
+        <div class="terminal-content"><span class="cmd">deshan@workstation ~/portfolio % cat projects.txt</span>
+
+- Variational 3D Autoencoder for CT Analysis: Developed a probabilistic model for anomaly detection.
+- CT Quality Scoring Module: 3D Slicer plugin for assessing segmentation quality.
+- MPC Protocol for Collaborative LCA: Implemented optimized Python/MP-SPDZ protocol.
+        </div>
+      </div>
+      <!-- Publications Terminal -->
+      <section id="publications"></section>
+      <div class="terminal">
+        <div class="terminal-header"><div class="term-buttons"><span></span><span></span><span></span></div><div class="term-title">Publications</div></div>
+        <div class="terminal-content"><span class="cmd">deshan@workstation ~/portfolio % cat publications.txt</span>
+
+- Doe, J. et al. (2025). Performance Evaluation of Privacy-Preserving LCA using MPC. <i>Automation Journal</i>.
+- Doe, J., Smith, A. (2025). 3D Variational Autoencoders in Medical Imaging. <i>IEEE ISBI</i>.
+- Doe, J. (2024). Secure Data Spaces for Circular Economy. <i>Journal of Industrial Informatics</i>.
+        </div>
+      </div>
+
+      <div class="copyright">Copyrighted @ 2025 Deshan Kalupahana</div>
+    </main>
+  </div>
+  <script src="js/matrix.js"></script>
+  <script>
+    // Matrix rain effect
+    document.addEventListener('DOMContentLoaded', () => {
+      const canvas = document.getElementById('matrix');
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;   
+      const columns = Math.floor(canvas.width / 20);
+      const drops = Array.from({ length: columns }).fill(1);  
+      function draw() {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#0f0';
+        ctx.font = '16px monospace';
+        drops.forEach((y, x) => {
+          const text = String.fromCharCode(Math.random() * 128);
+          ctx.fillText(text, x * 20, y);
+          if (y > canvas.height && Math.random() > 0.975) {
+            drops[x] = 0;
+          }
+          drops[x] += 20;
+        });
+      }
+      setInterval(draw, 50);
+    });
+  </script>
+</body>
+</html>
+</html>
