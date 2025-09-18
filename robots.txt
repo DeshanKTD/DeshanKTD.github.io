@@ -1,0 +1,11 @@
+# Robots.txt for Deshan Kalupahana's Portfolio
+# Allow all search engines to index the entire site
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://deshanktd.github.io/sitemap.xml
+
+# Crawl delay to be respectful to servers
+Crawl-delay: 1
