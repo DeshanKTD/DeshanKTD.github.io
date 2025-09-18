@@ -1,0 +1,23 @@
+# robots.txt for Deshan Kalupahana's Portfolio Website
+# Allow all search engines to crawl the site
+
+User-agent: *
+Allow: /
+
+# Disallow crawling of any temporary or system files
+Disallow: /.git/
+Disallow: /.DS_Store
+Disallow: /tmp/
+
+# Sitemap location
+Sitemap: https://deshanktd.github.io/sitemap.xml
+
+# Additional directives for major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
