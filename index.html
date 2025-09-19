@@ -156,7 +156,34 @@
     /* TERMINAL WINDOW STYLE */
     .terminal { background: var(--term-bg); border-radius: 4px; border: 1px solid #444; margin: 2rem 1rem; overflow: hidden; box-shadow: 0 0 10px rgba(0,255,0,0.3); }
     .terminal-header { background: var(--term-header); height: 28px; display: flex; align-items: center; padding: 0 10px; color: #ccc; font-size: 0.85rem; }
-    .term-buttons span { display: inline-block; width: 12px; height: 12px; margin-right: 6px; background: #555; border-radius: 2px; }
+    .term-buttons span { 
+      display: inline-block; 
+      width: 12px; 
+      height: 12px; 
+      margin-right: 6px; 
+      border-radius: 50%; 
+      cursor: pointer; 
+      transition: all 0.2s ease;
+    }
+    .term-buttons span:nth-child(1) { background: #ff5f57; } /* Close - Red */
+    .term-buttons span:nth-child(2) { background: #ffbd2e; } /* Minimize - Yellow */
+    .term-buttons span:nth-child(3) { background: #28ca42; } /* Maximize - Green */
+    .term-buttons span:hover { 
+      transform: scale(1.1); 
+      box-shadow: 0 0 5px rgba(255,255,255,0.3); 
+    }
+    .terminal.minimized .terminal-content { display: none; }
+    .terminal.maximized { 
+      position: fixed; 
+      top: 10px; 
+      left: 10px; 
+      right: 10px; 
+      bottom: 10px; 
+      z-index: 1000; 
+      margin: 0; 
+      border-radius: 8px; 
+    }
+    .terminal.hidden { display: none; }
     .term-title { flex: 1; text-align: center; margin-right: 50px; }
     .terminal-content { padding: 1rem; color: var(--term-text); font-family: 'Fira Code', monospace; font-size: 0.95rem; line-height: 1.4; white-space: wrap; }
     .terminal-content p { margin-bottom: 1rem; }
@@ -251,9 +278,9 @@
       <!-- About Terminal -->
       <section id="about" role="region" aria-labelledby="about-heading">
         <h2 id="about-heading" style="position: absolute; left: -9999px;">About Deshan Kalupahana</h2>
-      <div class="terminal">
+      <div class="terminal" id="terminal-about">
         <div class="terminal-header">
-          <div class="term-buttons"><span></span><span></span><span></span></div>
+          <div class="term-buttons"><span class="close-btn"></span><span class="minimize-btn"></span><span class="maximize-btn"></span></div>
           <div class="term-title">About</div>
         </div>
         <div class="terminal-content">
@@ -270,8 +297,8 @@
             <!-- Education Terminal -->
       <section id="education" role="region" aria-labelledby="education-heading">
         <h2 id="education-heading" style="position: absolute; left: -9999px;">Education Background</h2>
-      <div class="terminal">
-        <div class="terminal-header"><div class="term-buttons"><span></span><span></span><span></span></div><div class="term-title">Education</div></div>
+      <div class="terminal" id="terminal-education">
+        <div class="terminal-header"><div class="term-buttons"><span class="close-btn"></span><span class="minimize-btn"></span><span class="maximize-btn"></span></div><div class="term-title">Education</div></div>
         <div class="terminal-content">
           <p><span class="cmd">deshan@workstation ~/portfolio % cat education.txt</span> </p>
           <p>- PhD, <a href="https://www.unsw.edu.au/engineering/our-schools/computer-science-and-engineering"> School of Computer Science and Engineering, UNSW Sydney</a>, Australia (2024 Oct - Present)</p>
@@ -282,8 +309,8 @@
       <!-- Experience Terminal -->
       <section id="experience" role="region" aria-labelledby="experience-heading">
         <h2 id="experience-heading" style="position: absolute; left: -9999px;">Professional Experience</h2>
-      <div class="terminal">
-        <div class="terminal-header"><div class="term-buttons"><span></span><span ></span><span></span></div><div class="term-title">Experience</div></div>
+      <div class="terminal" id="terminal-experience">
+        <div class="terminal-header"><div class="term-buttons"><span class="close-btn"></span><span class="minimize-btn"></span><span class="maximize-btn"></span></div><div class="term-title">Experience</div></div>
         <div class="terminal-content">
           <p><span class="cmd">deshan@workstation ~/portfolio % cat experience.txt</span></p>
           <p>- Casual Acedemic, <a href="https://www.unsw.edu.au/engineering/our-schools/computer-science-and-engineering"> School of Computer Science & Engineering, UNSW Sydney</a>, Australia (2025 Feb - Present)</p>
@@ -299,8 +326,8 @@
       <!-- Research Terminal -->
       <section id="research" role="region" aria-labelledby="research-heading">
         <h2 id="research-heading" style="position: absolute; left: -9999px;">Research Areas and Projects</h2>
-      <div class="terminal">
-        <div class="terminal-header"><div class="term-buttons"><span></span><span></span><span></span></div><div class="term-title">Research</div></div>
+      <div class="terminal" id="terminal-research">
+        <div class="terminal-header"><div class="term-buttons"><span class="close-btn"></span><span class="minimize-btn"></span><span class="maximize-btn"></span></div><div class="term-title">Research</div></div>
         <div class="terminal-content">
           
           <p><span class="cmd">deshan@workstation ~/portfolio % cat research.txt</span></p>
@@ -322,8 +349,8 @@
       <!-- Publications Terminal -->
       <section id="publications" role="region" aria-labelledby="publications-heading">
         <h2 id="publications-heading" style="position: absolute; left: -9999px;">Academic Publications</h2>
-      <div class="terminal">
-        <div class="terminal-header"><div class="term-buttons"><span></span><span></span><span></span></div><div class="term-title">Publications</div></div>
+      <div class="terminal" id="terminal-publications">
+        <div class="terminal-header"><div class="term-buttons"><span class="close-btn"></span><span class="minimize-btn"></span><span class="maximize-btn"></span></div><div class="term-title">Publications</div></div>
         <div class="terminal-content">
           <p><span class="cmd">deshan@workstation ~/portfolio % cat publications.txt</span></p>
           <p>- Kalupahana, D., Kahatapitiya, N.S., Kamalathasan, D., Wijesinghe, R.E., Silva, B.N. and Wijenayake, U., 2024. <a href="https://doi.org/10.1109/ACCESS.2024.3492389"> State-of-the-art of deep learning in multidisciplinary optical coherence tomography applications </a>. IEEE Access.</p>
@@ -376,6 +403,51 @@
         });
       }
       setInterval(draw, 50);
+    });
+
+    // Terminal window controls functionality
+    document.addEventListener('DOMContentLoaded', () => {
+      // Add event listeners to all terminal control buttons
+      document.querySelectorAll('.term-buttons').forEach(buttonContainer => {
+        const terminal = buttonContainer.closest('.terminal');
+        const closeBtn = buttonContainer.querySelector('.close-btn');
+        const minimizeBtn = buttonContainer.querySelector('.minimize-btn');
+        const maximizeBtn = buttonContainer.querySelector('.maximize-btn');
+
+        // Close button functionality
+        closeBtn.addEventListener('click', () => {
+          terminal.classList.add('hidden');
+        });
+
+        // Minimize button functionality
+        minimizeBtn.addEventListener('click', () => {
+          terminal.classList.toggle('minimized');
+        });
+
+        // Maximize button functionality
+        maximizeBtn.addEventListener('click', () => {
+          terminal.classList.toggle('maximized');
+        });
+      });
+
+      // Add double-click on terminal header to restore from minimized state
+      document.querySelectorAll('.terminal-header').forEach(header => {
+        const terminal = header.closest('.terminal');
+        header.addEventListener('dblclick', () => {
+          if (terminal.classList.contains('minimized')) {
+            terminal.classList.remove('minimized');
+          }
+        });
+      });
+
+      // Add escape key to exit maximize mode
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          document.querySelectorAll('.terminal.maximized').forEach(terminal => {
+            terminal.classList.remove('maximized');
+          });
+        }
+      });
     });
   </script>
 </body>
