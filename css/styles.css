@@ -71,12 +71,19 @@ canvas {
   position: relative;
   z-index: 1;
   display: flex;
+  height: 100vh;
   min-height: 100vh;
+  overflow: hidden;
 }
 
 .sidebar {
   width: 350px;
+  flex: 0 0 350px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
   min-height: 100vh;
+  overflow-y: auto;
   background: linear-gradient(180deg, rgba(4, 10, 7, 0.96), rgba(2, 5, 4, 0.92));
   border-right: 1px solid var(--term-border);
   padding: 3rem 1.25rem 5rem;
@@ -153,12 +160,17 @@ canvas {
 
 .main {
   flex: 1;
+  height: 100vh;
   overflow-y: auto;
   background: linear-gradient(180deg, rgba(2, 6, 4, 0.76), rgba(2, 4, 3, 0.93));
   position: relative;
   z-index: 10;
   padding: 1rem 1rem 5.5rem;
   min-height: 100vh;
+}
+
+.main section {
+  scroll-margin-top: 5.5rem;
 }
 
 /* DESKTOP NAV */
@@ -492,11 +504,18 @@ canvas {
 @media (max-width: 768px) {
   .layout {
     flex-direction: column;
+    height: auto;
     min-height: auto;
+    overflow: visible;
   }
   .sidebar {
     width: 100%;
+    flex: none;
+    position: relative;
+    top: auto;
+    height: auto;
     min-height: auto;
+    overflow-y: visible;
     padding: 4.8rem 1rem 1.5rem;
   }
   .sidebar h1 { font-size: 1.55rem; }
@@ -504,8 +523,13 @@ canvas {
   #drawer-nav { display: none; }
   #drawer-drawer { display: block; }
   .main {
+    height: auto;
+    overflow-y: visible;
     padding: 0.75rem 0.7rem 5rem;
     min-height: calc(100vh - 300px);
+  }
+  .main section {
+    scroll-margin-top: 1rem;
   }
   .terminal {
     margin: 1rem 0;
