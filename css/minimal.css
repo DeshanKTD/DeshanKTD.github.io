@@ -10,7 +10,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --bg: #131311;
     --bg-elevated: #1a1a17;
     --text-primary: #f2f1ea;
@@ -19,6 +19,16 @@
     --accent: #e08a6f;
     --rule: #2c2b26;
   }
+}
+
+:root[data-theme="dark"] {
+  --bg: #131311;
+  --bg-elevated: #1a1a17;
+  --text-primary: #f2f1ea;
+  --text-secondary: #b8b6ab;
+  --text-muted: #7d7b70;
+  --accent: #e08a6f;
+  --rule: #2c2b26;
 }
 
 /* GLOBAL RESET */
@@ -205,8 +215,17 @@ section p:last-child { margin-bottom: 0; }
   gap: 1rem;
 }
 
-/* GLITCH ICON (link to terminal mode) */
-.glitch-icon {
+/* TOP-RIGHT ICON CONTROLS (theme toggle + glitch icon) */
+.top-controls {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 30;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.icon-btn {
   position: relative;
   display: inline-grid;
   place-items: center;
@@ -217,14 +236,26 @@ section p:last-child { margin-bottom: 0; }
   text-decoration: none;
   font-size: 0.95rem;
   border: 1px solid var(--rule);
-}
-.glitch-icon-fixed {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  z-index: 30;
   background: var(--bg-elevated);
+  cursor: pointer;
+  font-family: inherit;
 }
+.icon-btn:hover,
+.icon-btn:focus-visible {
+  color: var(--text-primary);
+  border-color: var(--text-muted);
+}
+
+/* THEME TOGGLE */
+.theme-toggle .icon-moon { display: none; }
+:root[data-theme="dark"] .theme-toggle .icon-sun { display: none; }
+:root[data-theme="dark"] .theme-toggle .icon-moon { display: inline; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-toggle .icon-sun { display: none; }
+  :root:not([data-theme="light"]) .theme-toggle .icon-moon { display: inline; }
+}
+
+/* GLITCH ICON (link to terminal mode) */
 .glitch-icon span { position: relative; z-index: 1; }
 .glitch-icon::before,
 .glitch-icon::after {

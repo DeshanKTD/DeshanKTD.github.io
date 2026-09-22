@@ -76,11 +76,26 @@
   </script>
 
   <link rel="stylesheet" href="css/minimal.css">
+  <script>
+    // Apply any saved theme choice before first paint, to avoid a flash of the wrong theme.
+    try {
+      var storedTheme = localStorage.getItem('theme');
+      if (storedTheme === 'light' || storedTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', storedTheme);
+      }
+    } catch (e) {}
+  </script>
 </head>
 <body>
-  <a href="matrix.html" class="glitch-icon glitch-icon-fixed" title="Enter terminal mode" aria-label="Enter terminal mode">
-    <span aria-hidden="true">◧</span>
-  </a>
+  <div class="top-controls">
+    <button type="button" id="theme-toggle" class="icon-btn theme-toggle" title="Toggle light/dark theme" aria-label="Toggle light/dark theme">
+      <span class="icon-sun" aria-hidden="true">☀</span>
+      <span class="icon-moon" aria-hidden="true">☾</span>
+    </button>
+    <a href="matrix.html" class="icon-btn glitch-icon" title="Enter terminal mode" aria-label="Enter terminal mode">
+      <span aria-hidden="true">◧</span>
+    </a>
+  </div>
   <div class="page">
     <header class="header">
       <img class="avatar" src="img/profile.jpeg" alt="Deshan Kalupahana - PhD Computer Vision Researcher at UNSW Sydney">
@@ -216,6 +231,21 @@
       }, { rootMargin: '-45% 0px -50% 0px' });
 
       sections.forEach(section => observer.observe(section));
+    });
+
+    // Light/dark theme toggle
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggle = document.getElementById('theme-toggle');
+      if (!toggle) return;
+
+      toggle.addEventListener('click', () => {
+        const root = document.documentElement;
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const current = root.getAttribute('data-theme') || (systemPrefersDark ? 'dark' : 'light');
+        const next = current === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        try { localStorage.setItem('theme', next); } catch (e) {}
+      });
     });
   </script>
 </body>
