@@ -1,0 +1,71 @@
+/* Inherits the homepage's typography, spacing, and light/dark palette. */
+.publication-page { max-width: 800px; }
+.back-nav { padding: 3.5rem 3rem 0 0; font-size: 0.85rem; }
+.back-nav a { color: var(--text-secondary); }
+.publication-header { padding: 3.5rem 0 2.75rem; }
+.publication-meta {
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.publication-header h1 {
+  font-size: clamp(1.7rem, 4.5vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.22;
+  letter-spacing: -0.035em;
+  overflow-wrap: break-word;
+  text-wrap: balance;
+}
+.authors { margin-top: 1.5rem; color: var(--text-secondary); font-size: 0.95rem; }
+.authors strong { font-weight: 600; color: var(--text-primary); }
+.resource-links { display: flex; flex-wrap: wrap; gap: 0.65rem; margin-top: 1.75rem; }
+.resource-link, .copy-button {
+  border: 1px solid var(--rule);
+  border-radius: 5px;
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  font: inherit;
+  font-size: 0.82rem;
+  padding: 0.45rem 0.85rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+.resource-link:hover, .copy-button:hover { border-color: var(--accent); color: var(--accent); }
+.resource-link span { margin-left: 0.5rem; }
+.publication-page section:first-of-type { border-top: 1px solid var(--rule); }
+.publication-page section h2 { color: var(--text-secondary); }
+.placeholder-copy { font-style: italic; }
+figure { margin-top: 1.75rem; }
+figure img { display: block; width: 100%; height: auto; border-radius: 5px; }
+.figure-placeholder {
+  min-height: 230px;
+  padding: 2rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: center;
+  border: 1px dashed var(--rule);
+  border-radius: 5px;
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+}
+.figure-number { color: var(--accent); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; }
+.figure-placeholder small, figcaption { font-size: 0.8rem; color: var(--text-secondary); }
+figcaption { margin-top: 0.75rem; }
+.section-heading { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1.25rem; }
+.section-heading h2 { margin-bottom: 0; }
+.citation-block { padding: 1.25rem; background: var(--bg-elevated); border: 1px solid var(--rule); border-radius: 5px; white-space: pre-wrap; overflow-wrap: anywhere; font-size: 0.8rem; color: var(--text-secondary); }
+.copy-status { font-size: 0.8rem; margin-top: 0.5rem; }
+.source-note { color: var(--text-secondary); font-size: 0.8rem; }
+.skip-link { position: absolute; left: 1rem; top: -5rem; z-index: 40; padding: 0.5rem 1rem; background: var(--bg-elevated); }
+.skip-link:focus { top: 1rem; }
+@media (max-width: 640px) {
+  .publication-header { padding: 2.5rem 0 2rem; }
+  .figure-placeholder { min-height: 180px; }
+  .publication-page .footer { flex-wrap: wrap; }
+}

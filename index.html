@@ -9,7 +9,7 @@
   <meta name="description" content="Deshan Kalupahana is a PhD candidate in Computer Vision and AI at UNSW Sydney, specializing in medical image analysis and colorectal disease research. Former lecturer and researcher with expertise in OCT, machine learning, and brain tumor analysis."/>
   <meta name="keywords" content="Deshan Kalupahana, PhD researcher, computer vision, artificial intelligence, medical imaging, colorectal diseases, UNSW Sydney, machine learning, OCT, brain tumor analysis, deep learning, medical AI"/>
   <meta name="author" content="Deshan Kalupahana"/>
-  <meta name="robots" content="index, follow"/>
+  <meta name="robots" content="index, follow, max-image-preview:large"/>
   <meta name="language" content="English"/>
   <meta name="google-site-verification" content="XbaNAQeh065SX02LPiURoZ4rjeaRh0Z0gxLNS8J-SDw" />
   <link rel="canonical" href="https://deshanktd.github.io/"/>
@@ -21,7 +21,9 @@
   <meta property="og:description" content="PhD candidate in Computer Vision and AI at UNSW Sydney, specializing in medical image analysis and colorectal disease research."/>
   <meta property="og:image" content="https://deshanktd.github.io/img/profile.png"/>
   <meta property="og:site_name" content="Deshan Kalupahana - Portfolio"/>
-  <meta property="og:locale" content="en_US"/>
+  <meta property="og:locale" content="en_AU"/>
+
+  <meta property="og:image:alt" content="Deshan Kalupahana, computer vision researcher at UNSW Sydney">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image"/>
@@ -30,6 +32,8 @@
   <meta property="twitter:description" content="PhD candidate in Computer Vision and AI at UNSW Sydney, specializing in medical image analysis and colorectal disease research."/>
   <meta property="twitter:image" content="https://deshanktd.github.io/img/profile.png"/>
   <meta property="twitter:creator" content="@deshanblack"/>
+
+  <meta name="twitter:image:alt" content="Deshan Kalupahana, computer vision researcher at UNSW Sydney">
 
   <!-- Academic/Research specific -->
   <meta name="citation_author" content="Kalupahana, Deshan"/>
@@ -76,15 +80,7 @@
   </script>
 
   <link rel="stylesheet" href="css/minimal.css">
-  <script>
-    // Apply any saved theme choice before first paint, to avoid a flash of the wrong theme.
-    try {
-      var storedTheme = localStorage.getItem('theme');
-      if (storedTheme === 'light' || storedTheme === 'dark') {
-        document.documentElement.setAttribute('data-theme', storedTheme);
-      }
-    } catch (e) {}
-  </script>
+  <script src="js/theme.js"></script>
 </head>
 <body>
   <div class="top-controls">
@@ -198,8 +194,9 @@
     <section id="publications" aria-labelledby="publications-heading">
       <h2 id="publications-heading">Publications</h2>
       <ul class="pub-list">
-        <li>Kalupahana, D., Kahatapitiya, N.S., Kamalathasan, D., Wijesinghe, R.E., Silva, B.N. and Wijenayake, U., 2024. <a href="https://doi.org/10.1109/ACCESS.2024.3492389">State-of-the-art of deep learning in multidisciplinary optical coherence tomography applications</a>. IEEE Access.</li>
-        <li>Kalupahana, D., Kahatapitiya, N.S., Silva, B.N., Kim, J., Jeon, M., Wijenayake, U. and Wijesinghe, R.E., 2024. <a href="https://doi.org/10.3390/s24165398">Dense convolutional neural network-based deep learning pipeline for pre-identification of circular leaf spot disease of diospyros kaki leaves</a>.</li>
+        <li>Kalupahana, D., Singh, S., Ravindran, P., and Sowmya, A., 2026. <a href="https://ieeexplore.ieee.org/abstract/document/11515927/">Preserving Anatomical Continuity: Three-Stage Pipeline for Colon Segmentation in 3D Abdominal CT Scans</a>. 2026 IEEE 23rd International Symposium on Biomedical Imaging (ISBI). IEEE. <a class="project-link" href="publications/colon-segmentation/index.html" aria-label="Colon segmentation project page" title="Colon segmentation project page"><span aria-hidden="true">&rarr;</span></a></li>
+        <li>Kalupahana, D., Kahatapitiya, N.S., Kamalathasan, D., Wijesinghe, R.E., Silva, B.N. and Wijenayake, U., 2024. <a href="https://doi.org/10.1109/ACCESS.2024.3492389">State-of-the-art of deep learning in multidisciplinary optical coherence tomography applications</a>. IEEE Access. <a class="project-link" href="publications/deep-learning-oct-review/index.html" aria-label="Deep learning OCT review project page" title="Deep learning OCT review project page"><span aria-hidden="true">&rarr;</span></a></li>
+        <li>Kalupahana, D., Kahatapitiya, N.S., Silva, B.N., Kim, J., Jeon, M., Wijenayake, U. and Wijesinghe, R.E., 2024. <a href="https://doi.org/10.3390/s24165398">Dense convolutional neural network-based deep learning pipeline for pre-identification of circular leaf spot disease of diospyros kaki leaves</a>. <a class="project-link" href="publications/circular-leaf-spot-detection/index.html" aria-label="Circular leaf spot detection project page" title="Circular leaf spot detection project page"><span aria-hidden="true">&rarr;</span></a></li>
         <li>Kahatapitiya, N.S., Kalupahana, D., Mohamed, H., Silva, B.N., Wijenayake, U., Han, S., Seong, D., Jeon, M., Kim, J. and Wijesinghe, R.E., 2024. <a href="https://doi.org/10.3390/ecsa-11-20515">Detection of Peak Intensity Using an Integrated Optical Modeling Method for Identifying Defective Apple Leaves</a>. Engineering Proceedings, 82(1), p.45.</li>
         <li>Vijithananda, S.M., Jayatilake, M.L., Gon&ccedil;alves, T.C., Rato, L.M., Weerakoon, B.S., Kalupahana, T.D., Silva, A.D., Dissanayake, K. and Hewavithana, P.B., 2023. <a href="https://www.nature.com/articles/s41598-023-41353-5">Texture feature analysis of MRI-ADC images to differentiate glioma grades using machine learning techniques</a>. Scientific Reports, 13(1), p.15772.</li>
       </ul>
@@ -233,20 +230,6 @@
       sections.forEach(section => observer.observe(section));
     });
 
-    // Light/dark theme toggle
-    document.addEventListener('DOMContentLoaded', () => {
-      const toggle = document.getElementById('theme-toggle');
-      if (!toggle) return;
-
-      toggle.addEventListener('click', () => {
-        const root = document.documentElement;
-        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const current = root.getAttribute('data-theme') || (systemPrefersDark ? 'dark' : 'light');
-        const next = current === 'dark' ? 'light' : 'dark';
-        root.setAttribute('data-theme', next);
-        try { localStorage.setItem('theme', next); } catch (e) {}
-      });
-    });
   </script>
 </body>
 </html>
