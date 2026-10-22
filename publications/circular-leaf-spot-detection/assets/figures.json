@@ -1,0 +1,98 @@
+[
+  {
+    "figure": 1,
+    "file": "figure-01-sd-oct-system.jpeg",
+    "page": 3,
+    "width": 1638,
+    "height": 793,
+    "caption": "Figure 1. Schematic of the spectral domain optical coherence tomography system (SD-OCT), high- lighting the reference arm, sample arm, spectrometer, computer and key components such as the broadband light source (BLS), fiber coupler (FC), collimator (C), lenses (L), mirror (M), sample (S) and galvanometer scanner (GS)."
+  },
+  {
+    "figure": 2,
+    "file": "figure-02-detection-pipeline.jpeg",
+    "page": 4,
+    "width": 1778,
+    "height": 736,
+    "caption": "Figure 2. Deep learning (DL) based pipeline for pre-identification of circular leaf spot (CLS) disease of persimmon. Class H, HI and I denote healthy, healthy-infected and infected, respectively."
+  },
+  {
+    "figure": 3,
+    "file": "figure-03-oct-image-cropping.png",
+    "page": 6,
+    "width": 1828,
+    "height": 762,
+    "caption": "Figure 3. OCT images acquired from scanning the leaf samples of persimmon. (a) Original OCT image acquired with 500 × 200 pixels of size. (b) The image cropped from the original OCT image. Respective cropped position is shown in the original image."
+  },
+  {
+    "figure": 4,
+    "file": "figure-04-persimmon-leaf-samples.jpeg",
+    "page": 6,
+    "width": 2182,
+    "height": 573,
+    "caption": "Figure 4. Photographs of the persimmon leaves from the infected and healthy trees. (a) Leaf from a healthy tree. (b) Healthy-looking leaf from an infected tree. (c) Infected leaf."
+  },
+  {
+    "figure": 5,
+    "file": "figure-05-image-quality-examples.png",
+    "page": 7,
+    "width": 1317,
+    "height": 740,
+    "caption": "Figure 5. Sample OCT-B scan images utilized for training the quality inspection model. (a) High-detail image. (b) Low-detail image."
+  },
+  {
+    "figure": 6,
+    "file": "figure-06-a-scan-labeling.png",
+    "page": 8,
+    "width": 762,
+    "height": 322,
+    "caption": "Figure 6. A-scan profile generated for the OCT B-scan image. The peaks denote the epidermal layer and parenchyma layer. The distance between the two peaks (∆t) was used as the factor to determine the class label according to Wijesinghe et al. [3]."
+  },
+  {
+    "figure": 7,
+    "file": "figure-07-transfer-learning-process.jpeg",
+    "page": 9,
+    "width": 1137,
+    "height": 987,
+    "caption": "Figure 7. The process of training two deep learning (DL) models using transfer learning."
+  },
+  {
+    "figure": 8,
+    "file": "figure-08-quality-model-training.jpeg",
+    "page": 12,
+    "width": 2182,
+    "height": 831,
+    "caption": "Figure 8. Accuracy and loss of training and validation of the quality inspection model. (a) Variation of accuracy with epochs. (b) Variation of loss with epochs."
+  },
+  {
+    "figure": 9,
+    "file": "figure-09-model-precision-recall.jpeg",
+    "page": 13,
+    "width": 2182,
+    "height": 834,
+    "caption": "Figure 9. Overall accuracy (OA) with precision and recall for CLS detection model. (a) Precision of each class for adapted pretrained models. (b) Recall of each class for adapted pretrained models."
+  },
+  {
+    "figure": 10,
+    "file": "figure-10-roc-curves.jpeg",
+    "page": 14,
+    "width": 2091,
+    "height": 1473,
+    "caption": "Figure 10. AUC–ROC calculated for predictions given by the analyzed deep learning (DL) models developed for classification of the stages of CLS disease."
+  },
+  {
+    "figure": 11,
+    "file": "figure-11-confusion-matrix.jpeg",
+    "page": 14,
+    "width": 1102,
+    "height": 931,
+    "caption": "Figure 11. Confusion matrix of best deep learning (DL) model trained for circular leaf spot (CLS) stage identification."
+  },
+  {
+    "figure": 12,
+    "file": "figure-12-b-scan-a-scan-examples.jpeg",
+    "page": 15,
+    "width": 1292,
+    "height": 1246,
+    "caption": "Figure 12. B-scan images and respective A-scan profiles of scanned leaf samples. (a) B-scan image of a sample labeled as H. (b) A-scan profile of the B-scan labeled as H because the peak difference (∆t1) is 141 µm and labeled as H by LAMP analysis. (c) B-scan image of a sample labeled as HI. (d) A-scan profile of the B-scan is labeled as HI because the peak difference (∆t2) is 126 µm and labeled as I by LAMP analysis."
+  }
+]

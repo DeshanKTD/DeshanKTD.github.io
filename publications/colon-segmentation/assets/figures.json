@@ -1,0 +1,32 @@
+[
+  {
+    "figure": 1,
+    "file": "figure-01-three-stage-pipeline.png",
+    "page": 2,
+    "width": 2032,
+    "height": 1084,
+    "caption": "Fig. 1. Three-stage pipeline for topology-preserving colon segmentation: (1) initial segmentation with possible disconnections (2) centreline bridging and (3) disconnected region prediction and merging.",
+    "extraction": "PDF figure region rendered at 288 dpi",
+    "clip": [
+      53,
+      70,
+      561,
+      341
+    ]
+  },
+  {
+    "figure": 2,
+    "file": "figure-02-reconstruction-examples.png",
+    "page": 4,
+    "width": 748,
+    "height": 612,
+    "caption": "Fig. 2. Samples from the TotalSegmentator and RAOS datasets showing cases with disconnections, and the pro- gressive reconstruction of colon segmentation across pipeline stages compared to the ground truth (GT) annotations.",
+    "extraction": "PDF figure region rendered at 288 dpi",
+    "clip": [
+      83,
+      370,
+      270,
+      523
+    ]
+  }
+]

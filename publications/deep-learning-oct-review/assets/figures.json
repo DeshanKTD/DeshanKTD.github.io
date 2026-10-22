@@ -1,0 +1,137 @@
+[
+  {
+    "figure": 1,
+    "file": "figure-01-ai-learning-hierarchy.png",
+    "page": 3,
+    "width": 1948,
+    "height": 1100,
+    "caption": "FIGURE 1. Hierarchical view of Artificial Intelligence (AI), categorized by its subfield of Machine Learning (ML), which encompasses various learning paradigms including supervised learning, unsupervised learning, and reinforcement learning. Deep Learning (DL) is a specific type of ML that uses complex Artificial Neural Networks (ANN).",
+    "extraction": "PDF figure region rendered at 288 dpi",
+    "clip": [
+      45,
+      65,
+      532,
+      340
+    ]
+  },
+  {
+    "figure": 2,
+    "file": "figure-02-swept-source-oct-system.png",
+    "page": 4,
+    "width": 968,
+    "height": 768,
+    "caption": "FIGURE 2. Schematic of the Swept-source Optical Coherence Tomography (OCT) system, highlighting the reference arm, sample arm, and key components such as the beamsplitter (BD), collimator (C), lenses (L), mirror (M), polarization controller (PC), circulators (CIR), fiber couplers (FC), and swept laser source.",
+    "extraction": "PDF figure region rendered at 288 dpi",
+    "clip": [
+      297,
+      196,
+      539,
+      388
+    ]
+  },
+  {
+    "figure": 3,
+    "file": "figure-03-deep-learning-taxonomy.png",
+    "page": 5,
+    "width": 1996,
+    "height": 1084,
+    "caption": "FIGURE 3. The application of deep learning (DL) techniques in the context of Optical Coherence Tomography (OCT) is predominantly classified into four main categories: classification, segmentation, generation, and enhancement.",
+    "extraction": "PDF figure region rendered at 288 dpi",
+    "clip": [
+      36,
+      67,
+      535,
+      338
+    ]
+  },
+  {
+    "figure": 4,
+    "file": "figure-04-retinal-oct-examples.png",
+    "page": 6,
+    "width": 960,
+    "height": 628,
+    "caption": "FIGURE 4. Example SD-OCT images from normal (column 1), AMD (column 2), and DME (column 3) data sets. The rows indicate the B-scans from different locations (adapted from [45]).",
+    "extraction": "PDF figure region rendered at 288 dpi",
+    "clip": [
+      37,
+      377,
+      277,
+      534
+    ]
+  },
+  {
+    "figure": 5,
+    "file": "figure-05-grad-cam-examples.png",
+    "page": 6,
+    "width": 960,
+    "height": 372,
+    "caption": "FIGURE 5. Gradient-weighted Class Activation Mapping (Grad-CAM) is a technique used in DL for visualizing which parts of an input image contribute the most to the prediction made by a CNN model (adapted from [58]).",
+    "extraction": "PDF figure region rendered at 288 dpi",
+    "clip": [
+      298,
+      297,
+      538,
+      390
+    ]
+  },
+  {
+    "figure": 6,
+    "file": "figure-06-retinal-disease-stages.png",
+    "page": 7,
+    "width": 964,
+    "height": 624,
+    "caption": "FIGURE 6. OCT B-scan images depicting both early and advanced stages of AMD and DME are presented. The images in column 1 correspond to early stages, while those in column 2 represent advanced stages. This visual representation aids in the examination and assessment of disease progression (adapted from [72]).",
+    "extraction": "PDF figure region rendered at 288 dpi",
+    "clip": [
+      297,
+      274,
+      538,
+      430
+    ]
+  },
+  {
+    "figure": 7,
+    "file": "figure-07-cordura-fabric-oct.png",
+    "page": 8,
+    "width": 968,
+    "height": 292,
+    "caption": "FIGURE 7. Cordura is a fabric brand recognized for its durability and resilience against tears, scuffs, and abrasions. (a) Volumetric image and (b) B-scan of a Cordura fabric (adapted from [76]).",
+    "extraction": "PDF figure region rendered at 288 dpi",
+    "clip": [
+      297,
+      473,
+      539,
+      546
+    ]
+  },
+  {
+    "figure": 8,
+    "file": "figure-08-retinal-fluid-segmentation.png",
+    "page": 12,
+    "width": 960,
+    "height": 332,
+    "caption": "FIGURE 8. The segmentation of retinal OCT B-scan images depicting DME-affected eyes. (A) B-scan samples. (B) Manual segmentation of retinal fluids. (C) Automated segmentation by the proposed DL model (adapted from [92]).",
+    "extraction": "PDF figure region rendered at 288 dpi",
+    "clip": [
+      298,
+      201,
+      538,
+      284
+    ]
+  },
+  {
+    "figure": 9,
+    "file": "figure-09-application-domains.png",
+    "page": 22,
+    "width": 1952,
+    "height": 1104,
+    "caption": "FIGURE 9. Potential domains of applications for OCT wherein DL methodologies can be employed for the analysis.",
+    "extraction": "PDF figure region rendered at 288 dpi",
+    "clip": [
+      44,
+      64,
+      532,
+      340
+    ]
+  }
+]
